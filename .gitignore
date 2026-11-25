@@ -12,10 +12,10 @@ ENV/
 .streamlit/
 
 # Modelos y resultados generados
-pinn/modelos/*.pt
+# pinn/modelos/*.pt  # Comentado: subimos los modelos pre-entrenados
 resultados/*.png
 resultados/*.csv
-informe/*.pdf
+# informe/*.pdf  # Comentado: subimos el reporte
 
 # Datos sensibles
 datos/privados/

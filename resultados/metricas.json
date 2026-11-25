@@ -1,0 +1,416 @@
+{
+ "lam_S": 10.0,
+ "epocas": 150,
+ "modo": "hard",
+ "precision_A": {
+  "nu1": {
+   "rmse_eta": 0.004422205034643412,
+   "mae_phi": 0.02328830026090145,
+   "err_rel_W_pct": 0.3146260380744934,
+   "err_rel_m_pct": 0.39307767152786255,
+   "err_rel_h_pct": 0.07271365076303482,
+   "viol_pct": 0.0,
+   "sigma_min": 0.2537407875061035
+  },
+  "nu2": {
+   "rmse_eta": 0.008946757763624191,
+   "mae_phi": 0.04735322296619415,
+   "err_rel_W_pct": 0.6202566623687744,
+   "err_rel_m_pct": 0.7850621342658997,
+   "err_rel_h_pct": 0.14584414660930634,
+   "viol_pct": 0.0,
+   "sigma_min": 0.2506380081176758
+  },
+  "nu5_picos": {
+   "rmse_eta": 0.036137741059064865,
+   "mae_phi": 0.1418454796075821,
+   "err_rel_W_pct": 2.17313289642334,
+   "err_rel_m_pct": 2.061514139175415,
+   "err_rel_h_pct": 0.44860532879829407,
+   "viol_pct": 0.0,
+   "sigma_min": 8.0108642578125e-05
+  },
+  "t_inferencia_red_ms": 0.05882923398166895,
+  "t_inferencia_red_fisica_ms": 1.7931534200033639
+ },
+ "serie_A_normal": {
+  "dia_alarma": 34,
+  "dia_penalizacion": 122
+ },
+ "serie_A_rapida": {
+  "dia_alarma": 17,
+  "dia_penalizacion": 39
+ },
+ "serie_A_pico_ncg": {
+  "dia_alarma": 34,
+  "dia_penalizacion": 122
+ },
+ "deteccion_A": [
+  {
+   "escenario": "normal",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 99.9,
+   "anticip_min": 88,
+   "exito_14d": 100.0,
+   "sin_pen": 0,
+   "falsas": 0,
+   "mae_phi": 0.02263269112252324,
+   "sesgo_pico": -6.492405087260913e-07,
+   "phi_alarma": 0.10492173945358144,
+   "dia_alarma": 34.2,
+   "dia_pen": 134.1
+  },
+  {
+   "escenario": "pico_ncg",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 99.9,
+   "anticip_min": 88,
+   "exito_14d": 100.0,
+   "sin_pen": 0,
+   "falsas": 0,
+   "mae_phi": 0.022680136558123117,
+   "sesgo_pico": 0.004312411400780031,
+   "phi_alarma": 0.10492173945358144,
+   "dia_alarma": 34.2,
+   "dia_pen": 134.1
+  },
+  {
+   "escenario": "rapida",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 26.8,
+   "anticip_min": 21,
+   "exito_14d": 100.0,
+   "sin_pen": 0,
+   "falsas": 0,
+   "mae_phi": 0.021885621001576136,
+   "sesgo_pico": -0.00017918166990165042,
+   "phi_alarma": 0.15437155114029114,
+   "dia_alarma": 16.85,
+   "dia_pen": 43.65
+  }
+ ],
+ "economia_A": [
+  {
+   "precio": 60.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 71996.37827039359,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 103,
+   "costo_calendario": 862046.6567969201,
+   "costo_reactiva": 786527.9388749496,
+   "costo_optimo": 769953.750638259,
+   "ahorro_vs_calendario": 92092.90615866112,
+   "ahorro_vs_reactiva": 16574.188236690592,
+   "phi_en_T_opt": 0.2759408034369675,
+   "dP1_pct_en_T_opt": 4.1391120515545055
+  },
+  {
+   "precio": 60.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 71996.37827039359,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 120,
+   "costo_calendario": 922879.9901302534,
+   "costo_reactiva": 870758.7081057187,
+   "costo_optimo": 868392.2939993821,
+   "ahorro_vs_calendario": 54487.69613087131,
+   "ahorro_vs_reactiva": 2366.414106336655,
+   "phi_en_T_opt": 0.3122545136332102,
+   "dP1_pct_en_T_opt": 4.68381770449815
+  },
+  {
+   "precio": 80.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 95995.17102719145,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 99,
+   "costo_calendario": 1129117.764618116,
+   "costo_reactiva": 1020626.9954230094,
+   "costo_optimo": 990416.0454596602,
+   "ahorro_vs_calendario": 138701.71915845573,
+   "ahorro_vs_reactiva": 30210.94996334915,
+   "phi_en_T_opt": 0.26705896535372714,
+   "dP1_pct_en_T_opt": 4.005884480305899
+  },
+  {
+   "precio": 80.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 95995.17102719145,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 112,
+   "costo_calendario": 1189951.0979514492,
+   "costo_reactiva": 1104857.7646537786,
+   "costo_optimo": 1094674.9369140281,
+   "ahorro_vs_calendario": 95276.16103742109,
+   "ahorro_vs_reactiva": 10182.8277397505,
+   "phi_en_T_opt": 0.2954489084627757,
+   "dP1_pct_en_T_opt": 4.431733626941625
+  },
+  {
+   "precio": 100.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 119993.96378398931,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 96,
+   "costo_calendario": 1396188.8724393116,
+   "costo_reactiva": 1254726.0519710695,
+   "costo_optimo": 1209880.4319097376,
+   "ahorro_vs_calendario": 186308.44052957394,
+   "ahorro_vs_reactiva": 44845.620061331894,
+   "phi_en_T_opt": 0.26030989505759383,
+   "dP1_pct_en_T_opt": 3.9046484258639103
+  },
+  {
+   "precio": 100.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 119993.96378398931,
+   "T_calendario": 180,
+   "T_reactiva": 130,
+   "T_optimo": 106,
+   "costo_calendario": 1457022.2057726448,
+   "costo_reactiva": 1338956.8212018388,
+   "costo_optimo": 1318108.2788718266,
+   "ahorro_vs_calendario": 138913.92690081825,
+   "ahorro_vs_reactiva": 20848.54233001219,
+   "phi_en_T_opt": 0.28251591019780303,
+   "dP1_pct_en_T_opt": 4.237738652967038
+  }
+ ],
+ "precision_B": {
+  "nu1": {
+   "rmse_eta": 0.004396713338792324,
+   "mae_phi": 0.023164045065641403,
+   "err_rel_W_pct": 0.3141765892505646,
+   "err_rel_m_pct": 0.3921908736228943,
+   "err_rel_h_pct": 0.0727117657661438,
+   "viol_pct": 0.0,
+   "sigma_min": 0.25698423385620117
+  },
+  "nu2": {
+   "rmse_eta": 0.008893822319805622,
+   "mae_phi": 0.04708458110690117,
+   "err_rel_W_pct": 0.6193116307258606,
+   "err_rel_m_pct": 0.7832324504852295,
+   "err_rel_h_pct": 0.1458062082529068,
+   "viol_pct": 0.0,
+   "sigma_min": 0.25397586822509766
+  },
+  "nu5_picos": {
+   "rmse_eta": 0.03589346632361412,
+   "mae_phi": 0.14091452956199646,
+   "err_rel_W_pct": 2.1693994998931885,
+   "err_rel_m_pct": 2.057469367980957,
+   "err_rel_h_pct": 0.4481217861175537,
+   "viol_pct": 0.0,
+   "sigma_min": 9.250640869140625e-05
+  },
+  "t_inferencia_red_ms": 0.058949502010364085,
+  "t_inferencia_red_fisica_ms": 6.4326697799697286
+ },
+ "serie_B_normal": {
+  "dia_alarma": 41,
+  "dia_penalizacion": 140
+ },
+ "serie_B_rapida": {
+  "dia_alarma": 19,
+  "dia_penalizacion": 46
+ },
+ "serie_B_pico_ncg": {
+  "dia_alarma": 41,
+  "dia_penalizacion": 140
+ },
+ "deteccion_B": [
+  {
+   "escenario": "normal",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 119.84210526315789,
+   "anticip_min": 99.0,
+   "exito_14d": 100.0,
+   "sin_pen": 1,
+   "falsas": 0,
+   "mae_phi": 0.022627069174674476,
+   "sesgo_pico": -4.64579100187725e-05,
+   "phi_alarma": 0.10163875339989703,
+   "dia_alarma": 39.2,
+   "dia_pen": 157.6315789473684
+  },
+  {
+   "escenario": "pico_ncg",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 119.84210526315789,
+   "anticip_min": 99.0,
+   "exito_14d": 100.0,
+   "sin_pen": 1,
+   "falsas": 0,
+   "mae_phi": 0.022672933868087886,
+   "sesgo_pico": 0.0037155786519471696,
+   "phi_alarma": 0.10163875339989703,
+   "dia_alarma": 39.2,
+   "dia_pen": 157.6315789473684
+  },
+  {
+   "escenario": "rapida",
+   "alarmas": 20,
+   "n": 20,
+   "anticip_media": 33.4,
+   "anticip_min": 27.0,
+   "exito_14d": 100.0,
+   "sin_pen": 0,
+   "falsas": 0,
+   "mae_phi": 0.021859586227501664,
+   "sesgo_pico": -6.0850060326192794e-05,
+   "phi_alarma": 0.1454524672790045,
+   "dia_alarma": 18.65,
+   "dia_pen": 52.05
+  }
+ ],
+ "economia_B": [
+  {
+   "precio": 60.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 70044.75418501969,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 111,
+   "costo_calendario": 761312.5505668214,
+   "costo_reactiva": 727205.8795767933,
+   "costo_optimo": 697628.63991581,
+   "ahorro_vs_calendario": 63683.91065101139,
+   "ahorro_vs_reactiva": 29577.239660983323,
+   "phi_en_T_opt": 0.25587593486111504,
+   "dP1_pct_en_T_opt": 3.83813902291672
+  },
+  {
+   "precio": 60.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 70044.75418501969,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 129,
+   "costo_calendario": 822145.8839001546,
+   "costo_reactiva": 798309.7756806894,
+   "costo_optimo": 788781.3528418747,
+   "ahorro_vs_calendario": 33364.531058279914,
+   "ahorro_vs_reactiva": 9528.422838814673,
+   "phi_en_T_opt": 0.2893930883825125,
+   "dP1_pct_en_T_opt": 4.3408963257376865
+  },
+  {
+   "precio": 80.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 93393.00558002625,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 106,
+   "costo_calendario": 994805.6229779834,
+   "costo_reactiva": 945906.5407344255,
+   "costo_optimo": 896624.4866031846,
+   "ahorro_vs_calendario": 98181.13637479884,
+   "ahorro_vs_reactiva": 49282.05413124093,
+   "phi_en_T_opt": 0.24621305763822182,
+   "dP1_pct_en_T_opt": 3.6931958645733287
+  },
+  {
+   "precio": 80.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 93393.00558002625,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 120,
+   "costo_calendario": 1055638.956311317,
+   "costo_reactiva": 1017010.4368383216,
+   "costo_optimo": 993222.2427809342,
+   "ahorro_vs_calendario": 62416.71353038272,
+   "ahorro_vs_reactiva": 23788.194057387416,
+   "phi_en_T_opt": 0.2728778141958486,
+   "dP1_pct_en_T_opt": 4.093167212937732
+  },
+  {
+   "precio": 100.0,
+   "c_limpieza": 30000.0,
+   "c_parada": 116741.25697503283,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 103,
+   "costo_calendario": 1228298.6953891467,
+   "costo_reactiva": 1164607.201892058,
+   "costo_optimo": 1094690.9821549905,
+   "ahorro_vs_calendario": 133607.71323415614,
+   "ahorro_vs_reactiva": 69916.21973706735,
+   "phi_en_T_opt": 0.24033892256599992,
+   "dP1_pct_en_T_opt": 3.6050838384900086
+  },
+  {
+   "precio": 100.0,
+   "c_limpieza": 60000.0,
+   "c_parada": 116741.25697503283,
+   "T_calendario": 180,
+   "T_reactiva": 154,
+   "T_optimo": 115,
+   "costo_calendario": 1289132.02872248,
+   "costo_reactiva": 1235711.0979959539,
+   "costo_optimo": 1194995.1609589749,
+   "ahorro_vs_calendario": 94136.86776350508,
+   "ahorro_vs_reactiva": 40715.93703697901,
+   "phi_en_T_opt": 0.26349362380229374,
+   "dP1_pct_en_T_opt": 3.9524043570344114
+  }
+ ],
+ "robustez_A": [
+  {
+   "prueba": "Sin desajuste",
+   "sesgo_phi": 0.000723813971844397,
+   "mae_phi": 0.023208657334725786,
+   "falsas_sin_cal": 0,
+   "falsas_con_cal": 0,
+   "n": 20,
+   "anticip_media_cal": 99.9
+  },
+  {
+   "prueba": "Condensador sucio (f_cond = 0,5)",
+   "sesgo_phi": 0.003178482031789503,
+   "mae_phi": 0.023495090539346522,
+   "falsas_sin_cal": 0,
+   "falsas_con_cal": 0,
+   "n": 20,
+   "anticip_media_cal": 100.0
+  },
+  {
+   "prueba": "Auxiliares +20 %",
+   "sesgo_phi": 0.021084545677867616,
+   "mae_phi": 0.028903851672604845,
+   "falsas_sin_cal": 0,
+   "falsas_con_cal": 0,
+   "n": 20,
+   "anticip_media_cal": 99.85
+  },
+  {
+   "prueba": "Turbina 2 % menos eficiente de f\u00e1brica",
+   "sesgo_phi": 0.08054079388674804,
+   "mae_phi": 0.08057869213702838,
+   "falsas_sin_cal": 20,
+   "falsas_con_cal": 0,
+   "n": 20,
+   "anticip_media_cal": 99.85
+  },
+  {
+   "prueba": "Extracci\u00f3n de NCG peor (k_ej \u00d7 2)",
+   "sesgo_phi": 0.0029906703292996504,
+   "mae_phi": 0.023600954802190263,
+   "falsas_sin_cal": 0,
+   "falsas_con_cal": 0,
+   "n": 20,
+   "anticip_media_cal": 100.4
+  }
+ ]
+}
