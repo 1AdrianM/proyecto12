@@ -17,7 +17,113 @@ from simulador import planta as P
 from simulador import termo
 from pinn import modelo as M
 
-st.set_page_config(page_title="Gemelo Digital Geotérmico", page_icon="🌋", layout="wide")
+st.set_page_config(
+    page_title="Gemelo Digital Geotérmico", 
+    page_icon="🌋", 
+    layout="wide",
+    initial_sidebar_state="auto"
+)
+
+    # CSS personalizado para móviles
+st.markdown("""
+<style>
+    /* Mejoras responsive para móviles */
+    @media (max-width: 768px) {
+        /* Reducir padding en móviles */
+        .block-container {
+            padding-top: 2rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        /* Métricas más compactas */
+        [data-testid="stMetric"] {
+            font-size: 0.9rem;
+        }
+        
+        [data-testid="stMetricLabel"] {
+            font-size: 0.75rem;
+        }
+        
+        [data-testid="stMetricValue"] {
+            font-size: 1.2rem;
+        }
+        
+        /* Tabs más accesibles en móvil */
+        .stTabs [data-baseweb="tab-list"] {
+            gap: 0.5rem;
+            overflow-x: auto;
+        }
+        
+        .stTabs [data-baseweb="tab"] {
+            font-size: 0.85rem;
+            padding: 0.5rem 0.75rem;
+            white-space: nowrap;
+        }
+        
+        /* Sidebar más estrecho en móvil */
+        [data-testid="stSidebar"] {
+            min-width: 250px;
+        }
+        
+        /* Gráficos responsive */
+        .js-plotly-plot {
+            width: 100% !important;
+        }
+        
+        /* Columnas apiladas en móvil */
+        [data-testid="column"] {
+            width: 100% !important;
+            flex: 100% !important;
+            max-width: 100% !important;
+        }
+        
+        /* Título más compacto */
+        h1 {
+            font-size: 1.5rem !important;
+        }
+        
+        h2 {
+            font-size: 1.3rem !important;
+        }
+        
+        h3 {
+            font-size: 1.1rem !important;
+        }
+        
+        /* Caption más legible */
+        .caption-text {
+            font-size: 0.75rem;
+        }
+        
+        /* Sliders más accesibles */
+        [data-baseweb="slider"] {
+            padding: 1rem 0;
+        }
+    }
+    
+    /* Mejorar contraste para todos los dispositivos */
+    .stMetric {
+        background-color: rgba(0, 0, 0, 0.02);
+        padding: 0.75rem;
+        border-radius: 0.5rem;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Mejor separación visual */
+    .element-container {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Mejorar tablas en móviles */
+    @media (max-width: 768px) {
+        [data-testid="stDataFrame"] {
+            font-size: 0.75rem;
+            overflow-x: auto;
+        }
+    }
+</style>
+""", unsafe_allow_html=True)
 UMBRAL_DEF, EWMA, PEN_P1 = 0.08, 0.2, 0.05
 COL_DATOS = P.COLS_MEDIDAS
 
@@ -86,20 +192,32 @@ with tab1:
     dia = st.slider("Día de operación (reproducción)", 0, len(df) - 1, min(len(df) - 1, 60))
     sub = df.iloc[:dia + 1]
     en_alarma = d_alarma is not None and dia >= d_alarma
-    c1, c2, c3, c4 = st.columns(4)
-    c1.metric("Estado del gemelo", "🔴 ALERTA: ensuciamiento" if en_alarma else "🟢 Normal")
-    c2.metric("Potencia neta medida", f"{df['W_neta_med'][dia]/1000:.2f} MW",
-              f"{(df['W_neta_med'][dia]-df['W_neta_limpia'][dia])/1000:+.2f} MW vs planta limpia")
-    c3.metric("φ estimado (media móvil)", f"{ew[dia]:.3f}", f"real: {df['phi'][dia]:.3f}", delta_color="off")
-    c4.metric("Anticipación de la alarma",
-              f"{d_pen - d_alarma} días" if (d_alarma is not None and d_pen is not None) else "—",
-              "antes de +5 % en P₁" if d_pen is not None else None, delta_color="off")
+    
+    # Métricas principales - responsive
+    st.markdown("### 📊 Panel de control")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.metric("Estado del gemelo", "🔴 ALERTA: ensuciamiento" if en_alarma else "🟢 Normal")
+        st.metric("φ estimado (media móvil)", f"{ew[dia]:.3f}", f"real: {df['phi'][dia]:.3f}", delta_color="off")
+    with c2:
+        st.metric("Potencia neta medida", f"{df['W_neta_med'][dia]/1000:.2f} MW",
+                  f"{(df['W_neta_med'][dia]-df['W_neta_limpia'][dia])/1000:+.2f} MW vs planta limpia")
+        st.metric("Anticipación de la alarma",
+                  f"{d_pen - d_alarma} días" if (d_alarma is not None and d_pen is not None) else "—",
+                  "antes de +5 % en P₁" if d_pen is not None else None, delta_color="off")
 
     g1 = go.Figure()
     g1.add_scatter(x=sub.dia, y=sub.W_neta_med / 1000, name="Potencia medida (con ruido)", mode="markers", marker=dict(size=4, opacity=0.5))
     g1.add_scatter(x=sub.dia, y=sub.W_neta_limpia / 1000, name="Esperada con turbina limpia (gemelo)", line=dict(dash="dash"))
     g1.add_scatter(x=sub.dia, y=pd.Series(W_fis[:dia + 1]) / 1000, name="Potencia física con η estimado")
-    g1.update_layout(title="Potencia neta [MW]", xaxis_title="día", yaxis_title="MW", height=330, legend=dict(orientation="h"))
+    g1.update_layout(
+        title="Potencia neta [MW]", 
+        xaxis_title="día", 
+        yaxis_title="MW", 
+        height=330, 
+        legend=dict(orientation="h", yanchor="bottom", y=-0.3),
+        margin=dict(l=20, r=20, t=40, b=60)
+    )
     g2 = go.Figure()
     g2.add_scatter(x=sub.dia, y=sub.phi, name="φ real (simulador)", line=dict(color="black"))
     g2.add_scatter(x=sub.dia, y=phi_hat[:dia + 1], name="φ estimado (PINN)", mode="markers", marker=dict(size=4, opacity=0.4))
@@ -109,7 +227,13 @@ with tab1:
         g2.add_vline(x=d_alarma, line_color="crimson", annotation_text="alarma")
     if d_pen is not None and dia >= d_pen:
         g2.add_vline(x=d_pen, line_color="gray", annotation_text="+5 % P₁")
-    g2.update_layout(title="Índice de ensuciamiento φ (0 = limpia)", xaxis_title="día", height=330, legend=dict(orientation="h"))
+    g2.update_layout(
+        title="Índice de ensuciamiento φ (0 = limpia)", 
+        xaxis_title="día", 
+        height=330, 
+        legend=dict(orientation="h", yanchor="bottom", y=-0.3),
+        margin=dict(l=20, r=20, t=40, b=60)
+    )
     ca, cb = st.columns(2)
     ca.plotly_chart(g1, width="stretch")
     cb.plotly_chart(g2, width="stretch")
@@ -118,13 +242,25 @@ with tab1:
     g3.add_scatter(x=sub.dia, y=sub.P1_med, name="P₁ medida [bar]", mode="markers", marker=dict(size=4, opacity=0.5))
     g3.add_scatter(x=sub.dia, y=sub.P1, name="P₁ real", line=dict(color="black"))
     g3.add_hline(y=P.PAR["P1"] * (1 + PEN_P1), line_dash="dot", annotation_text="penalización +5 %")
-    g3.update_layout(title="Presión del primer flash / entrada a turbina", xaxis_title="día", height=300, legend=dict(orientation="h"))
+    g3.update_layout(
+        title="Presión del primer flash / entrada a turbina", 
+        xaxis_title="día", 
+        height=300, 
+        legend=dict(orientation="h", yanchor="bottom", y=-0.3),
+        margin=dict(l=20, r=20, t=40, b=60)
+    )
     g4 = go.Figure()
     S_gen = (fis["m_hp"] * fis["sig1"] + fis["m_lp"] * fis["sig2"]).numpy()[:dia + 1]
     g4.add_scatter(x=sub.dia, y=S_gen, name="Generación de entropía estimada [kW/K]")
     g4.add_scatter(x=sub.dia, y=sub.S_gen_turb, name="Real (simulador)", line=dict(color="black"))
     g4.add_hline(y=0, line_color="red")
-    g4.update_layout(title="Segunda Ley: σ̇ estimada ≥ 0", xaxis_title="día", height=300)
+    g4.update_layout(
+        title="Segunda Ley: σ̇ estimada ≥ 0", 
+        xaxis_title="día", 
+        height=300,
+        legend=dict(orientation="h", yanchor="bottom", y=-0.3),
+        margin=dict(l=20, r=20, t=40, b=60)
+    )
     cc, cd = st.columns(2)
     cc.plotly_chart(g3, width="stretch")
     cd.plotly_chart(g4, width="stretch")
