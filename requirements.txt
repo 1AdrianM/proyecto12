@@ -1,0 +1,9 @@
+numpy
+scipy
+pandas
+matplotlib
+CoolProp
+torch
+streamlit>=1.50
+plotly
+reportlab

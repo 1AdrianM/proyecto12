@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+
+# Streamlit
+.streamlit/
+
+# Modelos y resultados generados
+pinn/modelos/*.pt
+resultados/*.png
+resultados/*.csv
+informe/*.pdf
+
+# Datos sensibles
+datos/privados/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
